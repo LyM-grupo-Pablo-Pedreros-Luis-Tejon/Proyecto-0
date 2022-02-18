@@ -6,18 +6,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 public class Carga 
 {
-	private Comandos comando;
-	private ArrayList<Variable> variables;
+	public static ArrayList<String> variables;
 	private Condicion condicion;
 	private Estructura estructura;
+	private String archivo;
+	private static String[] comandos = {"defvar","=","move","turn","face","put","pick","move-dir","run-dirs","move-face","skip"};
+	private static String[] estructuras = {"if","loop","repeat","defun"};
 	
-	private void leerTXT(String codigo) throws IOException,FileNotFoundException
+	public Carga(String archivo)
+	{
+		this.archivo = archivo;
+	}
+	public boolean leerTXT() throws IOException,FileNotFoundException
 	{
 		
-		FileReader file = new FileReader(codigo);
+		FileReader file = new FileReader(archivo);
 		BufferedReader br = new BufferedReader(file);
 		String message = "";
 		String line = br.readLine();
@@ -44,7 +49,10 @@ public class Carga
 	        			{
 	        				parentInicio = 0;
 	        				parentFinal = 0;
-	        				comprobar(sentencia);
+	        				if (!(comprobar(sentencia))) 
+	        				{
+	        					return false;
+	        				}
 	        				sentencia = "";
 	        			}
 	        		}
@@ -53,11 +61,31 @@ public class Carga
 		}
 		System.out.println(message);
 		br.close();
-		
+		if (parentInicio != parentFinal)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 	
 	private boolean comprobar(String sentencia)
 	{
+		sentencia = sentencia.substring(1, sentencia.length() - 1);
+		String[] palabras = sentencia.split(" ");
+		for (String comando: comandos)
+		{
+			if (palabras[0] == comando)
+			{
+				if (!(Comandos.comprobar(palabras)))
+				{
+					return false;
+				}
+			}
+			
+		}
 		return true;
 	}
 }
