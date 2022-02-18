@@ -66,6 +66,17 @@ public class Comandos implements Sentencia
 		}
 		else if (comienzo.equals("turn"))
 		{
+			for (String direccion: Carga.direcciones)
+			{
+				if (direccion.equals(palabras[1]))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+		else if (comienzo.equals("face"))
+		{
 			
 		}
 	}

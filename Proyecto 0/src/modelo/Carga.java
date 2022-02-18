@@ -12,8 +12,11 @@ public class Carga
 	private Condicion condicion;
 	private Estructura estructura;
 	private String archivo;
+	public static String[] direcciones = {":left",":right",":around"};
+	public static String[] cardinales = {":north",":south",":east",":west"};
 	private static String[] comandos = {"defvar","=","move","turn","face","put","pick","move-dir","run-dirs","move-face","skip"};
 	private static String[] estructuras = {"if","loop","repeat","defun"};
+
 	
 	public Carga(String archivo)
 	{
