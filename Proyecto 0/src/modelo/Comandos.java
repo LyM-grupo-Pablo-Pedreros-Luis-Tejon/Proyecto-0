@@ -1,13 +1,7 @@
 package modelo;
 
-public class Comandos implements Sentencia
+public class Comandos 
 {
-	private String name;
-	
-	public Comandos(String nombre)
-	{
-		name = nombre;
-	}
 
 	public static boolean comprobar(String[] palabras) 
 	{
@@ -81,9 +75,6 @@ public class Comandos implements Sentencia
 		}
 	}
 
-	public String getName() 
-	{
-		return name;
-	}
+	
 
 }

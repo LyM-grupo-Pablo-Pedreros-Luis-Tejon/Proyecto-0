@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Carga 
 {
 	public static ArrayList<String> variables;
+	public static ArrayList<String> funciones;
 	private Condicion condicion;
 	private Estructura estructura;
 	private String archivo;
@@ -76,16 +77,22 @@ public class Carga
 	
 	private boolean comprobar(String sentencia)
 	{
-		sentencia = sentencia.substring(1, sentencia.length() - 1);
-		String[] palabras = sentencia.split(" ");
+		String sentencia2 = sentencia.substring(1, sentencia.length() - 1);
+		String[] palabras = sentencia2.split(" ");
 		for (String comando: comandos)
 		{
-			if (palabras[0] == comando)
+			if (palabras[0].equals(comando))
 			{
-				if (!(Comandos.comprobar(palabras)))
-				{
-					return false;
-				}
+				return !(Comandos.comprobar(palabras));
+				
+			}
+			
+		}
+		for (String comando: comandos)
+		{
+			if (palabras[0].equals("if"))
+			{
+				return !(IfCondition.comprobar(sentencia));
 			}
 			
 		}
