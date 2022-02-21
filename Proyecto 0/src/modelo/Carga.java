@@ -8,14 +8,12 @@ import java.util.ArrayList;
 
 public class Carga 
 {
-	public static ArrayList<String> variables;
-	public static ArrayList<String> funciones;
-	private Condicion condicion;
+	public static ArrayList<String> variables = new ArrayList<String>();
+	public static ArrayList<String> funciones = new ArrayList<String>();
 	private String archivo;
 	public static String[] direcciones = {":left",":right",":around"};
 	public static String[] cardinales = {":north",":south",":east",":west"};
 	private static String[] comandos = {"defvar","=","move","turn","face","put","pick","move-dir","run-dirs","move-face","skip"};
-	private static String[] estructuras = {"if","loop","repeat","defun"};
 
 	
 	public Carga(String archivo)
@@ -82,15 +80,21 @@ public class Carga
 		{
 			if (palabras[0].equals(comando))
 			{
-				return !(Comandos.comprobar(palabras));
-				
+				return (Comandos.comprobar(palabras));
 			}
 			
 		}
-		
 		if (palabras[0].equals("if"))
 		{
-			return !(IfCondition.comprobar(sentencia));
+			return (IfCondition.comprobar(sentencia));
+		}
+		if (palabras[0].equals("loop"))
+		{
+			return (Loop.comprobar(sentencia));
+		}
+		if (palabras[0].equals("repeat"))
+		{
+			return (Repeat.comprobar(sentencia));
 		}
 			
 		

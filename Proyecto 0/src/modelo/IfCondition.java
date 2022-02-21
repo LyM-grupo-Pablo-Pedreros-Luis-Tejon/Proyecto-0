@@ -32,7 +32,6 @@ public class IfCondition
 	        		if (caracter == '(')
 	        		{
 	        			parentInicio ++;
-	        			
 	        		}
 	        		else if (caracter == ')')
 	        		{
@@ -46,10 +45,8 @@ public class IfCondition
 	        			}
 	        		}
 	        	}
-        	}
-        	
+        	}	
         }
-        
         return bloques;
 	}
 	
@@ -62,7 +59,7 @@ public class IfCondition
 		String[] palabras2 = sentencia2.split(" ");
 		String sentencia0 = bloques.get(0).substring(1, bloques.get(0).length() - 1);
 		String[] palabras0 = sentencia0.split(" ");
-		return Condicion.comprobar(palabras0) && Comandos.comprobar(palabras1) && Comandos.comprobar(palabras2);
+		return ((Condicion.comprobar(palabras0) && Comandos.comprobar(palabras1)) && Comandos.comprobar(palabras2));
 		
 	}
 }
