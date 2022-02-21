@@ -8,10 +8,9 @@ import java.util.ArrayList;
 
 public class Carga 
 {
-	public static ArrayList<String> variables;
-	public static ArrayList<String> funciones;
+	public static ArrayList<String> variables = new ArrayList<String>();
+	public static ArrayList<String> funciones = new ArrayList<String>();
 	private Condicion condicion;
-	private Estructura estructura;
 	private String archivo;
 	public static String[] direcciones = {":left",":right",":around"};
 	public static String[] cardinales = {":north",":south",":east",":west"};
@@ -83,18 +82,13 @@ public class Carga
 		{
 			if (palabras[0].equals(comando))
 			{
-				return !(Comandos.comprobar(palabras));
-				
+				return (Comandos.comprobar(palabras));
 			}
 			
 		}
-		for (String comando: comandos)
+		if (palabras[0].equals("if"))
 		{
-			if (palabras[0].equals("if"))
-			{
-				return !(IfCondition.comprobar(sentencia));
-			}
-			
+			return (IfCondition.comprobar(sentencia));
 		}
 		return true;
 	}
