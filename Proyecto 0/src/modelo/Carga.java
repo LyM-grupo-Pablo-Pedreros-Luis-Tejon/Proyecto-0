@@ -11,7 +11,6 @@ public class Carga
 	public static ArrayList<String> variables;
 	public static ArrayList<String> funciones;
 	private Condicion condicion;
-	private Estructura estructura;
 	private String archivo;
 	public static String[] direcciones = {":left",":right",":around"};
 	public static String[] cardinales = {":north",":south",":east",":west"};
@@ -88,14 +87,13 @@ public class Carga
 			}
 			
 		}
-		for (String comando: comandos)
+		
+		if (palabras[0].equals("if"))
 		{
-			if (palabras[0].equals("if"))
-			{
-				return !(IfCondition.comprobar(sentencia));
-			}
-			
+			return !(IfCondition.comprobar(sentencia));
 		}
+			
+		
 		return true;
 	}
 }
