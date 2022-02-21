@@ -96,8 +96,8 @@ public class Carga
 		{
 			return (Repeat.comprobar(sentencia));
 		}
-			
+		if (palabras[0])
 		
-		return true;
+		return false;
 	}
 }

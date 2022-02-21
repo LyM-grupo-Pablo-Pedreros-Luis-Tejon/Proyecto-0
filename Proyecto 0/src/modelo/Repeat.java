@@ -7,6 +7,7 @@ public class Repeat
 	public static ArrayList<String> hallarBloques(String sentencia)
 	{
 		sentencia = sentencia.substring(1, sentencia.length() - 1);
+	
 		char[] caracteres = sentencia.toCharArray();
 		
 		ArrayList<String> bloques = new ArrayList<String>();
@@ -69,11 +70,30 @@ public class Repeat
 	
 	public static boolean comprobar(String sentencia)
 	{
+		String[] palabras = sentencia.split(" ");
+		try
+		{
+			Integer.parseInt(palabras[1]);
+		}
+		catch (Exception e)
+		{
+			boolean b = false;
+			for (String variable: Carga.variables)
+			{
+				if (variable.equals(palabras[1]))
+				{
+					b = true;
+				}
+			}
+			if (!(b))
+			{
+				return false;
+			}
+		}
 		ArrayList<String> bloques= hallarBloques(sentencia);
 		String sentencia1 = bloques.get(1).substring(1, bloques.get(1).length() - 1);
 		String[] palabras1 = sentencia1.split(" ");
-		String variable = bloques.get(0);
-		return Variable.comprobar(variable) && Comandos.comprobar(palabras1);
+		return (Comandos.comprobar(palabras1) || Funciones.comprobar(sentencia1));
 		
 	}
 	

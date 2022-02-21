@@ -53,13 +53,17 @@ public class IfCondition
 	public static boolean comprobar(String sentencia)
 	{
 		ArrayList<String> bloques= hallarBloques(sentencia);
+		if (bloques.size() != 3)
+		{
+			return false;
+		}
 		String sentencia1 = bloques.get(1).substring(1, bloques.get(1).length() - 1);
 		String[] palabras1 = sentencia1.split(" ");
 		String sentencia2 = bloques.get(2).substring(1, bloques.get(2).length() - 1);
 		String[] palabras2 = sentencia2.split(" ");
 		String sentencia0 = bloques.get(0).substring(1, bloques.get(0).length() - 1);
 		String[] palabras0 = sentencia0.split(" ");
-		return ((Condicion.comprobar(palabras0) && Comandos.comprobar(palabras1)) && Comandos.comprobar(palabras2));
+		return ((Condicion.comprobar(palabras0) && (Comandos.comprobar(palabras1) || Funciones.comprobar(sentencia1))) && (Comandos.comprobar(palabras2) || Funciones.comprobar(sentencia2)));
 		
 	}
 }
