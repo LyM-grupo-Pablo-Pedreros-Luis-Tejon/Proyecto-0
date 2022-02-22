@@ -2,13 +2,13 @@
 (defun blocked-p ()
 (not (can-move-p :north) ) )
 (if (blocked-p) (move 1) (skip))
-(
+
 (if (blocked-p) (move 1) (skip))
-(turn : left )
-)
+(turn :left )
+
 (defun goend ()
 (if (not blocked-p)
-((move one)
+((move 1)
 (goend))
 (skip)))
 

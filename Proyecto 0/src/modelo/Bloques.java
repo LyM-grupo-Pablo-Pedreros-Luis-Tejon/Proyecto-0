@@ -11,7 +11,19 @@ public class Bloques
 		{
 			for (String instruccion: bloques)
 			{
-				if (!(Bloques.comprobar(instruccion, instruccion.split(" "))))
+				if (!(Bloques.comprobar(instruccion, instruccion.substring(1, instruccion.length() - 1).split(" "))))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+		else if (hallarBloques(sentencia.substring(1, sentencia.length() - 1)).size() > 1)
+		{
+			bloques = hallarBloques(sentencia.substring(1, sentencia.length() - 1));
+			for (String instruccion: bloques)
+			{
+				if (!(Bloques.comprobar(instruccion, instruccion.substring(1, instruccion.length() - 1).split(" "))))
 				{
 					return false;
 				}
@@ -47,6 +59,7 @@ public class Bloques
 				return (Funciones.comprobar(palabras));
 			}
 		}
+		
 		return Condicion.comprobar(palabras);
 		}
 	}

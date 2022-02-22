@@ -11,7 +11,7 @@ public class Carga
 	public static ArrayList<String> variables = new ArrayList<String>();
 	public static ArrayList<String> funciones = new ArrayList<String>();
 	private String archivo;
-	public static String[] direcciones = {":left",":right",":around"};
+	public static String[] direcciones = {":left",":right",":around",":front",":back",":up",":down"};
 	public static String[] cardinales = {":north",":south",":east",":west"};
 	public static String[] comandos = {"defvar","=","move","turn","face","put","pick","move-dir","run-dirs","move-face","skip"};
 

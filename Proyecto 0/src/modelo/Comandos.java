@@ -13,8 +13,10 @@ public class Comandos
 				boolean dir = false;
 				for (String direccion: Carga.direcciones)
 				{
-					String palabra = palabras[i].replaceAll("(", "");
-					palabra = palabra.replaceAll("(", "");
+					String palabra = palabras[i];
+					palabra = palabra.replace('(', 'z');
+					palabra = palabra.replace(')', 'z');
+					palabra = palabra.replaceAll("z", "");
 					if (palabra.equals(direccion))
 					{
 						dir = true;

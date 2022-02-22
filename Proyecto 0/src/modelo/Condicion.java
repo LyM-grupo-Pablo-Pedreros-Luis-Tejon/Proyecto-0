@@ -34,6 +34,36 @@ public class Condicion
 			}
 			return false;
 		}
+		else if (comienzo.equals("not"))
+		{
+			String newCondition = "";
+			for (String palabra: palabras)
+			{
+				if (palabra.equals(comienzo))
+				{
+					
+				}
+				else
+				{
+					if (newCondition.equals(""))
+					{
+						newCondition = palabra;
+					}
+					else
+						newCondition = newCondition + " " + palabra;
+				}
+			}
+			String[] palabras1 = newCondition.split(" ");
+			if (Condicion.comprobar(palabras1))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+
+		}
 		else
 		{
 			return false;
