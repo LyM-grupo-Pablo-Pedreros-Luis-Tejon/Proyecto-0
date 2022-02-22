@@ -13,7 +13,7 @@ public class Carga
 	private String archivo;
 	public static String[] direcciones = {":left",":right",":around"};
 	public static String[] cardinales = {":north",":south",":east",":west"};
-	private static String[] comandos = {"defvar","=","move","turn","face","put","pick","move-dir","run-dirs","move-face","skip"};
+	public static String[] comandos = {"defvar","=","move","turn","face","put","pick","move-dir","run-dirs","move-face","skip"};
 
 	
 	public Carga(String archivo)
@@ -88,16 +88,21 @@ public class Carga
 		{
 			return (IfCondition.comprobar(sentencia));
 		}
-		if (palabras[0].equals("loop"))
+		else if (palabras[0].equals("loop"))
 		{
 			return (Loop.comprobar(sentencia));
 		}
-		if (palabras[0].equals("repeat"))
+		else if (palabras[0].equals("repeat"))
 		{
 			return (Repeat.comprobar(sentencia));
 		}
-		if (palabras[0])
-		
+		for (String funcion: funciones) 
+		{
+			if (palabras[0].equals(funcion))
+			{
+				return (Funciones.comprobar(palabras));
+			}
+		}
 		return false;
 	}
 }

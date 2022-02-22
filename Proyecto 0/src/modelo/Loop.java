@@ -59,10 +59,10 @@ public class Loop {
 			return false;
 		}
 		String sentencia1 = bloques.get(1).substring(1, bloques.get(1).length() - 1);
-		String[] palabras1 = sentencia1.split(" ");
 		String sentencia0 = bloques.get(0).substring(1, bloques.get(0).length() - 1);
 		String[] palabras0 = sentencia0.split(" ");
-		return (Condicion.comprobar(palabras0) && (Comandos.comprobar(palabras1) || Funciones.comprobar(sentencia1)));
+		String[] palabras1 = sentencia1.split(" ");
+		return ((Condicion.comprobar(palabras0) || Funciones.comprobar(palabras0)) && (Bloques.comprobar(sentencia1,palabras1)));
 		
 	}
 }

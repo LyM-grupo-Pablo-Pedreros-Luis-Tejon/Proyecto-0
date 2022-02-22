@@ -93,8 +93,7 @@ public class Repeat
 		ArrayList<String> bloques= hallarBloques(sentencia);
 		String sentencia1 = bloques.get(1).substring(1, bloques.get(1).length() - 1);
 		String[] palabras1 = sentencia1.split(" ");
-		return (Comandos.comprobar(palabras1) || Funciones.comprobar(sentencia1));
-		
+		return (Bloques.comprobar(sentencia1,palabras1));
 	}
 	
 }

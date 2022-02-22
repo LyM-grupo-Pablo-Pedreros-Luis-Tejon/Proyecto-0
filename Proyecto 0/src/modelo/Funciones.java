@@ -1,16 +1,15 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Funciones
 {
-	
-	
+	public static HashMap<String,ArrayList<String>> funciones = new HashMap<String,ArrayList<String>>(); 
 	
 	public static ArrayList<String> hallarBloques(String sentencia)
 	{
-		char[] caracteres = sentencia.toCharArray();
-		
+		char[] caracteres = sentencia.toCharArray();	
 		ArrayList<String> bloques = new ArrayList<String>();
 		String bloque = "";
 		boolean fBlock = false;
@@ -49,16 +48,64 @@ public class Funciones
         return bloques;
 	}
 	
-	public static boolean comprobar(String sentencia)
+	public static boolean comprobarDef(String sentencia)
 	{
 		ArrayList<String> bloques = Funciones.hallarBloques(sentencia);
+		String[] palabras = sentencia.split(" ");
+		funciones.put(palabras[1], new ArrayList<String>());
+		String[] parametros = bloques.get(0).substring(1, bloques.get(0).length() - 1).split(" ");
+		for (String parametro: parametros)
+		{
+			funciones.get(palabras[1]).add(parametro);
+			Carga.variables.add(parametro);
+		}
 		String sentencia1 = bloques.get(1).substring(1, bloques.get(1).length() - 1);
 		String[] palabras1 = sentencia1.split(" ");
-		String sentencia2 = bloques.get(2).substring(1, bloques.get(2).length() - 1);
-		String[] palabras2 = sentencia2.split(" ");
-		String sentencia0 = bloques.get(0).substring(1, bloques.get(0).length() - 1);
-		String[] palabras0 = sentencia0.split(" ");
-		return ((Condicion.comprobar(palabras0) && (Comandos.comprobar(palabras1) || Funciones.comprobar(sentencia1))) && (Comandos.comprobar(palabras2) || Funciones.comprobar(sentencia2)));
-		
+		boolean retorno = false;
+		retorno = Bloques.comprobar(sentencia1,palabras1);
+		for (String variable: Carga.variables)
+		{
+			for (String parametro: parametros)
+			{
+				if (parametro.equals(variable))
+				{
+					Carga.variables.remove(variable);
+				}
+			}
+		}
+		return retorno;
+	}
+	
+	public static boolean comprobar(String[] palabras)
+	{
+		for (String funcion: funciones.keySet()) 
+		 {
+			if (palabras[0].equals(funcion))
+			{
+				if ((palabras.length - 1) == funciones.get(palabras[0]).size()) 
+				{
+					boolean retorno = false;
+					for (int i = 1; i > palabras.length; i++)
+					{
+						try
+						{
+							Integer.parseInt(palabras[i]);
+						}
+						catch (Exception e)
+						{
+							for (String variable: Carga.variables)
+							{
+								if (variable.equals(palabras[i]))
+								{
+									retorno = true;
+								}
+							}
+						}
+					}
+					return retorno;
+				}
+			}
+		 }
+		 return false;
 	}
 }
