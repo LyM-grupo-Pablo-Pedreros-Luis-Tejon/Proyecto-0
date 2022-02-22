@@ -63,16 +63,25 @@ public class Funciones
 		String[] palabras1 = sentencia1.split(" ");
 		boolean retorno = false;
 		retorno = Bloques.comprobar(sentencia1,palabras1);
-		for (String variable: Carga.variables)
+		ArrayList<String> temp = Carga.variables;
+		for (int i = 0; i < Carga.variables.size(); i++)
 		{
+			try 
+			{
 			for (String parametro: parametros)
 			{
-				if (parametro.equals(variable))
+				if (parametro.equals(Carga.variables.get(i)))
 				{
-					Carga.variables.remove(variable);
+					temp.remove(parametro);
 				}
 			}
+			}
+			catch (Exception e)
+			{
+				
+			}
 		}
+		Carga.variables = temp;
 		return retorno;
 	}
 	

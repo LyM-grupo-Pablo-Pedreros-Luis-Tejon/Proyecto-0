@@ -1,0 +1,15 @@
+(defvar rotate 3)
+(defun blocked-p ()
+(not (can-move-p :north) ) )
+(if (blocked-p) (move 1) (skip))
+(
+(if (blocked-p) (move 1) (skip))
+(turn : left )
+)
+(defun goend ()
+(if (not blocked-p)
+((move one)
+(goend))
+(skip)))
+
+(run-dirs (:left :up :left :down :right))

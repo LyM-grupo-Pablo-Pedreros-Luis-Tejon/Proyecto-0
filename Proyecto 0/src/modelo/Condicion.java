@@ -103,6 +103,13 @@ public class Condicion
 		
 		else 
 		{
+			for (String funcion: Funciones.funciones.keySet())
+			{
+				if (comienzo.equals(funcion))
+				{
+					return true;
+				}
+			}
 			return false;
 		}
 	}

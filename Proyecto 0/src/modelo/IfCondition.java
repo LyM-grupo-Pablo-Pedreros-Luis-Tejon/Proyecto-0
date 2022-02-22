@@ -42,6 +42,7 @@ public class IfCondition
 	        				parentFinal = 0;
 	        				bloques.add(bloque);
 	        				bloque = "";
+	        				fBlock = false;
 	        			}
 	        		}
 	        	}

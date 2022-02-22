@@ -12,13 +12,9 @@ public class Consola
 
 	public static void main(String[] args) throws FileNotFoundException, IOException
 	{
-		//*String ex = "elemento 20 gracias";
-		//*String[] ex2 = ex.split(" ");
-		//*System.out.println(ex2);
-		//*System.out.println(ex2.length);
 		final String file = input("Escriba el nombre del archivo de instrucciones");
 		Carga modelo = new Carga(file);
-		modelo.leerTXT();
+		System.out.println(modelo.leerTXT());
 	}
 
 	public static String input(String mensaje)

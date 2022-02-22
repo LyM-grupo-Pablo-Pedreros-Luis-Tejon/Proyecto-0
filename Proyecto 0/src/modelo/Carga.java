@@ -18,7 +18,7 @@ public class Carga
 	
 	public Carga(String archivo)
 	{
-		this.archivo = archivo;
+		this.archivo = "data/" + archivo;
 	}
 	public boolean leerTXT() throws IOException,FileNotFoundException
 	{
@@ -59,6 +59,7 @@ public class Carga
 	        		}
 	        	}
 	        }
+	        line = br.readLine();
 		}
 		System.out.println(message);
 		br.close();
@@ -95,6 +96,10 @@ public class Carga
 		else if (palabras[0].equals("repeat"))
 		{
 			return (Repeat.comprobar(sentencia));
+		}
+		else if (palabras[0].equals("defun"))
+		{
+			return (Funciones.comprobarDef(sentencia2));
 		}
 		for (String funcion: funciones) 
 		{

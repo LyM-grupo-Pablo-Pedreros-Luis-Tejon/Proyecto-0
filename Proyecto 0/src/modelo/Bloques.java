@@ -47,7 +47,7 @@ public class Bloques
 				return (Funciones.comprobar(palabras));
 			}
 		}
-		return false;
+		return Condicion.comprobar(palabras);
 		}
 	}
 	
